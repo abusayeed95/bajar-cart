@@ -24,11 +24,11 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default" id="minusButton"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1" id="phoneInput">
-                           <button class="btn btn-default" id="plusButton"><i class="fas fa-plus"></i></button>
+                           <button class="btn btn-default" id="minusButton1"><i class="fas fa-minus"></i></button>
+                           <input type="text" class="form-control text-center" value="1" id="phoneInput" disabled>
+                           <button class="btn btn-default" id="plusButton1"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$<span id="phonePrice">2</span></h5>
+                        <h5>$<span id="phonePrice">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -41,11 +41,11 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button class="btn btn-default" id="minusButton2"><i class="fas fa-minus"></i></button>
+                           <input type="text" class="form-control text-center" value="1" id="caseInput" disabled>
+                           <button class="btn btn-default" id="plusButton2"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$59</h5>
+                        <h5>$<span id="casePrice">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -58,7 +58,7 @@
                         <h5>Total:</h5>
                      </div>
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
+                        <h5>$<span id="subTotal">1,278</span></h5>
                         <h5>$0</h5>
                         <h5>$1,278</h5>
                      </div>
@@ -73,8 +73,8 @@
    </section>
 
    <script>
-      const minusButton = document.getElementById("minusButton");
-      minusButton.addEventListener("click", function () {
+      const minusButton1 = document.getElementById("minusButton1");
+      minusButton1.addEventListener("click", function () {
          const minusValueString = document.getElementById("phoneInput").value;
          const minusValueNumber = parseFloat(minusValueString);
          const newMinusValue = minusValueNumber - 1;
@@ -82,22 +82,51 @@
 
          const phonePrice = document.getElementById("phonePrice").innerText;
          const phonePriceNumber = parseFloat(phonePrice);
-         const newPhonePrice = newMinusValue * phonePriceNumber;
+         const newPhonePrice = newMinusValue * 1219;
          document.getElementById("phonePrice").innerText = newPhonePrice;
+         let subTotalAmount = newPhonePrice;
+         document.getElementById("subTotal").innerText = subTotalAmount;
       })
 
-      const plusButton = document.getElementById("plusButton");
-      plusButton.addEventListener("click", function () {
-         let plusValueString = document.getElementById("phoneInput").value;
-         let plusValueNumber = parseFloat(plusValueString);
+      const plusButton1 = document.getElementById("plusButton1");
+      plusButton1.addEventListener("click", function () {
+         const plusValueString = document.getElementById("phoneInput").value;
+         const plusValueNumber = parseFloat(plusValueString);
          const newPlusValue = plusValueNumber + 1;
          document.getElementById("phoneInput").value = newPlusValue;
 
          const phonePrice = document.getElementById("phonePrice").innerText;
          const phonePriceNumber = parseFloat(phonePrice);
-         const newPhonePrice = newPlusValue * phonePriceNumber;
+         const newPhonePrice = newPlusValue * 1219;
          document.getElementById("phonePrice").innerText = newPhonePrice;
       })
+
+      const minusButton2 = document.getElementById("minusButton2");
+      minusButton2.addEventListener("click", function () {
+         const minusValueString = document.getElementById("caseInput").value;
+         const minusValueNumber = parseFloat(minusValueString);
+         const newMinusValue = minusValueNumber - 1;
+         document.getElementById("caseInput").value = newMinusValue;
+
+         const casePrice = document.getElementById("casePrice").innerText;
+         const casePriceNumber = parseFloat(casePrice);
+         const newCasePrice = newMinusValue * 59;
+         document.getElementById("casePrice").innerText = newCasePrice;
+      })
+
+      const plusButton2 = document.getElementById("plusButton2");
+      plusButton2.addEventListener("click", function () {
+         const plusValueString = document.getElementById("caseInput").value;
+         const plusValueNumber = parseFloat(plusValueString);
+         const newPlusValue = plusValueNumber + 1;
+         document.getElementById("caseInput").value = newPlusValue;
+
+         const casePrice = document.getElementById("casePrice").innerText;
+         const casePriceNumber = parseFloat(casePrice);
+         const newCasePrice = newPlusValue * 59;
+         document.getElementById("casePrice").innerText = newCasePrice;
+      })
+
 
    </script>
 </body>
