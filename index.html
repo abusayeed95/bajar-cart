@@ -24,16 +24,15 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button class="btn btn-default" id="minusButton"><i class="fas fa-minus"></i></button>
+                           <input type="text" class="form-control text-center" value="1" id="phoneInput">
+                           <button class="btn btn-default" id="plusButton"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$<span id="phonePrice">2</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
                </div>
-
                <div class="cart-item">
                   <div class="row">
                      <div class="col-md-7 center-item mx-auto">
@@ -51,7 +50,6 @@
                      </div>
                   </div>
                </div>
-
                <div class="cart-item">
                   <div class="row">
                      <div class="col-md-8">
@@ -73,6 +71,35 @@
          </div>
       </div>
    </section>
+
+   <script>
+      const minusButton = document.getElementById("minusButton");
+      minusButton.addEventListener("click", function () {
+         const minusValueString = document.getElementById("phoneInput").value;
+         const minusValueNumber = parseFloat(minusValueString);
+         const newMinusValue = minusValueNumber - 1;
+         document.getElementById("phoneInput").value = newMinusValue;
+
+         const phonePrice = document.getElementById("phonePrice").innerText;
+         const phonePriceNumber = parseFloat(phonePrice);
+         const newPhonePrice = newMinusValue * phonePriceNumber;
+         document.getElementById("phonePrice").innerText = newPhonePrice;
+      })
+
+      const plusButton = document.getElementById("plusButton");
+      plusButton.addEventListener("click", function () {
+         let plusValueString = document.getElementById("phoneInput").value;
+         let plusValueNumber = parseFloat(plusValueString);
+         const newPlusValue = plusValueNumber + 1;
+         document.getElementById("phoneInput").value = newPlusValue;
+
+         const phonePrice = document.getElementById("phonePrice").innerText;
+         const phonePriceNumber = parseFloat(phonePrice);
+         const newPhonePrice = newPlusValue * phonePriceNumber;
+         document.getElementById("phonePrice").innerText = newPhonePrice;
+      })
+
+   </script>
 </body>
 
 </html>
