@@ -25,10 +25,10 @@
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
                            <button class="btn btn-default" id="minusButton1"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1" id="phoneInput" disabled>
+                           <input type="text" class="form-control text-center" value="0" id="phoneInput" disabled>
                            <button class="btn btn-default" id="plusButton1"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$<span id="phonePrice">1219</span></h5>
+                        <h5>$<span id="phonePrice">0</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item" id="phoneValueRemove">
                      </div>
                   </div>
@@ -42,10 +42,10 @@
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
                            <button class="btn btn-default" id="minusButton2"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1" id="caseInput" disabled>
+                           <input type="text" class="form-control text-center" value="0" id="caseInput" disabled>
                            <button class="btn btn-default" id="plusButton2"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$<span id="casePrice">59</span></h5>
+                        <h5>$<span id="casePrice">0</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item" id="caseValueRemove">
                      </div>
                   </div>
@@ -59,8 +59,8 @@
                      </div>
                      <div class="col-md-4 status">
                         <h5>$<span id="subTotal">0</span></h5>
-                        <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5>$<span id="tax">0</span></h5>
+                        <h5>$<span id="total">0</span></h5>
                      </div>
                   </div>
                </div>
@@ -73,12 +73,114 @@
    </section>
 
    <script>
+
+      //elaborated code
+
+
+      var minusButton1 = document.getElementById("minusButton1");
+      minusButton1.addEventListener("click", function () {
+         var minusValueString = document.getElementById("phoneInput").value;
+         var minusValueNumber = parseFloat(minusValueString);
+         var newMinusValue = minusValueNumber - 1;
+         document.getElementById("phoneInput").value = newMinusValue;
+
+         var phonePrice = document.getElementById("phonePrice").innerText;
+         var phonePriceNumber = parseFloat(phonePrice);
+         var newPhonePrice = newMinusValue * 1219;
+         document.getElementById("phonePrice").innerText = newPhonePrice;
+
+         var casePrice = document.getElementById("casePrice").innerText;
+         var casePriceNumber = parseFloat(casePrice);
+         let subTotal = phonePriceNumber + casePriceNumber;
+         document.getElementById("subTotal").innerText = subTotal;
+
+         var tax = document.getElementById("tax").innerTex;
+         tax = subTotal * .05;
+
+         var total = document.getElementById("total").innerText;
+         total = subTotal + tax;
+      })
+
+      var plusButton1 = document.getElementById("plusButton1");
+      plusButton1.addEventListener("click", function () {
+         var plusValueString = document.getElementById("phoneInput").value;
+         var plusValueNumber = parseFloat(plusValueString);
+         var newPlusValue = plusValueNumber + 1;
+         document.getElementById("phoneInput").value = newPlusValue;
+
+         var phonePrice = document.getElementById("phonePrice").innerText;
+         var phonePriceNumber = parseFloat(phonePrice);
+         var newPhonePrice = newPlusValue * 1219;
+         document.getElementById("phonePrice").innerText = newPhonePrice;
+
+         var casePrice = document.getElementById("casePrice").innerText;
+         var casePriceNumber = parseFloat(casePrice);
+         let subTotal = phonePriceNumber + casePriceNumber;
+         document.getElementById("subTotal").innerText = subTotal;
+
+         var tax = document.getElementById("tax").innerTex;
+         tax = subTotal * .05;
+
+         var total = document.getElementById("total").innerText;
+         total = subTotal + tax;
+      })
+
+      var minusButton2 = document.getElementById("minusButton2");
+      minusButton2.addEventListener("click", function () {
+         var minusValueString = document.getElementById("caseInput").value;
+         var minusValueNumber = parseFloat(minusValueString);
+         var newMinusValue = minusValueNumber - 1;
+         document.getElementById("caseInput").value = newMinusValue;
+
+         var casePrice = document.getElementById("casePrice").innerText;
+         var casePriceNumber = parseFloat(casePrice);
+         var newCasePrice = newMinusValue * 59;
+         document.getElementById("casePrice").innerText = newCasePrice;
+
+         var phonePrice = document.getElementById("phonePrice").innerText;
+         var phonePriceNumber = parseFloat(phonePrice);
+         let subTotal = phonePriceNumber + newCasePrice;
+         document.getElementById("subTotal").innerText = subTotal;
+      })
+
+      var plusButton2 = document.getElementById("plusButton2");
+      plusButton2.addEventListener("click", function () {
+         var plusValueString = document.getElementById("caseInput").value;
+         var plusValueNumber = parseFloat(plusValueString);
+         var newPlusValue = plusValueNumber + 1;
+         document.getElementById("caseInput").value = newPlusValue;
+
+         var casePrice = document.getElementById("casePrice").innerText;
+         var casePriceNumber = parseFloat(casePrice);
+         var newCasePrice = newPlusValue * 59;
+         document.getElementById("casePrice").innerText = newCasePrice;
+
+         var phonePrice = document.getElementById("phonePrice").innerText;
+         var phonePriceNumber = parseFloat(phonePrice);
+         let subTotal = phonePriceNumber + casePriceNumber;
+         document.getElementById("subTotal").innerText = subTotal;
+      })
+
+      var phoneValueRemove = document.getElementById("phoneValueRemove");
+      phoneValueRemove.addEventListener("click", function () {
+         document.getElementById("phoneInput").value = 0;
+         document.getElementById("phonePrice").innerText = 0;
+      })
+
+      var caseValueRemove = document.getElementById("caseValueRemove");
+      caseValueRemove.addEventListener("click", function () {
+         document.getElementById("caseInput").value = 0;
+         document.getElementById("casePrice").innerText = 0;
+      })
+
+
+
+
+      //shortened code
+
       // var minusButton1 = document.getElementById("minusButton1");
       // minusButton1.addEventListener("click", function () {
-      //    var minusValueString = document.getElementById("phoneInput").value;
-      //    var minusValueNumber = parseFloat(minusValueString);
-      //    var newMinusValue = minusValueNumber - 1;
-      //    document.getElementById("phoneInput").value = newMinusValue;
+      //    minusButton("phoneInput");
 
       //    var phonePrice = document.getElementById("phonePrice").innerText;
       //    var phonePriceNumber = parseFloat(phonePrice);
@@ -91,10 +193,7 @@
 
       // var plusButton1 = document.getElementById("plusButton1");
       // plusButton1.addEventListener("click", function () {
-      //    var plusValueString = document.getElementById("phoneInput").value;
-      //    var plusValueNumber = parseFloat(plusValueString);
-      //    var newPlusValue = plusValueNumber + 1;
-      //    document.getElementById("phoneInput").value = newPlusValue;
+      //    plusButton("phoneInput");
 
       //    var phonePrice = document.getElementById("phonePrice").innerText;
       //    var phonePriceNumber = parseFloat(phonePrice);
@@ -107,71 +206,38 @@
 
       // var minusButton2 = document.getElementById("minusButton2");
       // minusButton2.addEventListener("click", function () {
-      //    var minusValueString = document.getElementById("caseInput").value;
-      //    var minusValueNumber = parseFloat(minusValueString);
-      //    var newMinusValue = minusValueNumber - 1;
-      //    document.getElementById("caseInput").value = newMinusValue;
-
-      //    var casePrice = document.getElementById("casePrice").innerText;
-      //    var casePriceNumber = parseFloat(casePrice);
-      //    var newCasePrice = newMinusValue * 59;
-      //    document.getElementById("casePrice").innerText = newCasePrice;
-
-      //    var phonePrice = document.getElementById("phonePrice").innerText;
-      //    var phonePriceNumber = parseFloat(phonePrice);
-      //    let subTotal = phonePriceNumber + newCasePrice;
-      //    document.getElementById("subTotal").innerText = subTotal;
+      //    minusButton("caseInput");
       // })
 
       // var plusButton2 = document.getElementById("plusButton2");
       // plusButton2.addEventListener("click", function () {
-      //    var plusValueString = document.getElementById("caseInput").value;
+      //    plusButton("caseInput");
+      // })
+
+      // //common functions
+
+      // function minusButton(id) {
+      //    var minusValueString = document.getElementById(id).value;
+      //    var minusValueNumber = parseFloat(minusValueString);
+      //    var newMinusValue = minusValueNumber - 1;
+      //    document.getElementById(id).value = newMinusValue;
+      //    return newMinusValue;
+      // }
+
+      // function plusButton(id) {
+      //    var plusValueString = document.getElementById(id).value;
       //    var plusValueNumber = parseFloat(plusValueString);
       //    var newPlusValue = plusValueNumber + 1;
-      //    document.getElementById("caseInput").value = newPlusValue;
+      //    document.getElementById(id).value = newPlusValue;
+      //    return newPlusValue;
+      // }
 
-      //    var casePrice = document.getElementById("casePrice").innerText;
-      //    var casePriceNumber = parseFloat(casePrice);
-      //    var newCasePrice = newPlusValue * 59;
-      //    document.getElementById("casePrice").innerText = newCasePrice;
-
-      //    var phonePrice = document.getElementById("phonePrice").innerText;
-      //    var phonePriceNumber = parseFloat(phonePrice);
-      //    let subTotal = phonePriceNumber + newCasePrice;
-      //    document.getElementById("subTotal").innerText = subTotal;
-      // })
-      // var phoneValueRemove = document.getElementById("phoneValueRemove");
-      // phoneValueRemove.addEventListener("click", function () {
-      //    document.getElementById("phoneInput").value = 0;
-      // })
-
-      // var caseValueRemove = document.getElementById("caseValueRemove");
-      // caseValueRemove.addEventListener("click", function () {
-      //    document.getElementById("caseInput").value = 0;
-      // })
-
-      var minusButton1 = document.getElementById("minusButton1");
-      minusButton1.addEventListener("click", function () {
-         minusButton("phoneInput");
-         productPrice("phonePrice", 1219, newMinusValue);
-      })
-
-      //common functions
-
-      function minusButton(id) {
-         var minusValueString = document.getElementById(id).value;
-         var minusValueNumber = parseFloat(minusValueString);
-         var newMinusValue = minusValueNumber - 1;
-         document.getElementById(id).value = newMinusValue;
-         return newMinusValue;
-      }
-
-      function productPrice(id, value, newValue) {
-         var price = document.getElementById(id).innerText;
-         var priceNumber = parseFloat(phonePrice);
-         var newPrice = newValue * value;
-         document.getElementById(id).innerText = newPrice;
-      }
+      // function productPrice(id, value, newValue) {
+      //    var price = document.getElementById(id).innerText;
+      //    var priceNumber = parseFloat(phonePrice);
+      //    var newPrice = newValue * value;
+      //    document.getElementById(id).innerText = newPrice;
+      // }
 
 
 
