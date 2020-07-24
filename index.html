@@ -58,7 +58,7 @@
                         <h5>Total:</h5>
                      </div>
                      <div class="col-md-4 status">
-                        <h5>$<span id="subTotal">1,278</span></h5>
+                        <h5>$<span id="subTotal">0</span></h5>
                         <h5>$0</h5>
                         <h5>$1,278</h5>
                      </div>
@@ -73,58 +73,72 @@
    </section>
 
    <script>
-      const minusButton1 = document.getElementById("minusButton1");
+      var minusButton1 = document.getElementById("minusButton1");
       minusButton1.addEventListener("click", function () {
-         const minusValueString = document.getElementById("phoneInput").value;
-         const minusValueNumber = parseFloat(minusValueString);
-         const newMinusValue = minusValueNumber - 1;
+         var minusValueString = document.getElementById("phoneInput").value;
+         var minusValueNumber = parseFloat(minusValueString);
+         var newMinusValue = minusValueNumber - 1;
          document.getElementById("phoneInput").value = newMinusValue;
 
-         const phonePrice = document.getElementById("phonePrice").innerText;
-         const phonePriceNumber = parseFloat(phonePrice);
-         const newPhonePrice = newMinusValue * 1219;
+         var phonePrice = document.getElementById("phonePrice").innerText;
+         var phonePriceNumber = parseFloat(phonePrice);
+         var newPhonePrice = newMinusValue * 1219;
          document.getElementById("phonePrice").innerText = newPhonePrice;
-         let subTotalAmount = newPhonePrice;
-         document.getElementById("subTotal").innerText = subTotalAmount;
+
+         let subTotal = newPhonePrice;
+         document.getElementById("subTotal").innerText = subTotal;
       })
 
-      const plusButton1 = document.getElementById("plusButton1");
+      var plusButton1 = document.getElementById("plusButton1");
       plusButton1.addEventListener("click", function () {
-         const plusValueString = document.getElementById("phoneInput").value;
-         const plusValueNumber = parseFloat(plusValueString);
-         const newPlusValue = plusValueNumber + 1;
+         var plusValueString = document.getElementById("phoneInput").value;
+         var plusValueNumber = parseFloat(plusValueString);
+         var newPlusValue = plusValueNumber + 1;
          document.getElementById("phoneInput").value = newPlusValue;
 
-         const phonePrice = document.getElementById("phonePrice").innerText;
-         const phonePriceNumber = parseFloat(phonePrice);
-         const newPhonePrice = newPlusValue * 1219;
+         var phonePrice = document.getElementById("phonePrice").innerText;
+         var phonePriceNumber = parseFloat(phonePrice);
+         var newPhonePrice = newPlusValue * 1219;
          document.getElementById("phonePrice").innerText = newPhonePrice;
+
+         var subTotal = newPhonePrice;
+         document.getElementById("subTotal").innerText = subTotal;
       })
 
-      const minusButton2 = document.getElementById("minusButton2");
+      var minusButton2 = document.getElementById("minusButton2");
       minusButton2.addEventListener("click", function () {
-         const minusValueString = document.getElementById("caseInput").value;
-         const minusValueNumber = parseFloat(minusValueString);
-         const newMinusValue = minusValueNumber - 1;
+         var minusValueString = document.getElementById("caseInput").value;
+         var minusValueNumber = parseFloat(minusValueString);
+         var newMinusValue = minusValueNumber - 1;
          document.getElementById("caseInput").value = newMinusValue;
 
-         const casePrice = document.getElementById("casePrice").innerText;
-         const casePriceNumber = parseFloat(casePrice);
-         const newCasePrice = newMinusValue * 59;
+         var casePrice = document.getElementById("casePrice").innerText;
+         var casePriceNumber = parseFloat(casePrice);
+         var newCasePrice = newMinusValue * 59;
          document.getElementById("casePrice").innerText = newCasePrice;
+
+         var phonePrice = document.getElementById("phonePrice").innerText;
+         var phonePriceNumber = parseFloat(phonePrice);
+         let subTotal = phonePriceNumber + newCasePrice;
+         document.getElementById("subTotal").innerText = subTotal;
       })
 
-      const plusButton2 = document.getElementById("plusButton2");
+      var plusButton2 = document.getElementById("plusButton2");
       plusButton2.addEventListener("click", function () {
-         const plusValueString = document.getElementById("caseInput").value;
-         const plusValueNumber = parseFloat(plusValueString);
-         const newPlusValue = plusValueNumber + 1;
+         var plusValueString = document.getElementById("caseInput").value;
+         var plusValueNumber = parseFloat(plusValueString);
+         var newPlusValue = plusValueNumber + 1;
          document.getElementById("caseInput").value = newPlusValue;
 
-         const casePrice = document.getElementById("casePrice").innerText;
-         const casePriceNumber = parseFloat(casePrice);
-         const newCasePrice = newPlusValue * 59;
+         var casePrice = document.getElementById("casePrice").innerText;
+         var casePriceNumber = parseFloat(casePrice);
+         var newCasePrice = newPlusValue * 59;
          document.getElementById("casePrice").innerText = newCasePrice;
+
+         var phonePrice = document.getElementById("phonePrice").innerText;
+         var phonePriceNumber = parseFloat(phonePrice);
+         let subTotal = phonePriceNumber + newCasePrice;
+         document.getElementById("subTotal").innerText = subTotal;
       })
 
 
