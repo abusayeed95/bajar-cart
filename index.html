@@ -53,7 +53,7 @@
                <div class="cart-item">
                   <div class="row">
                      <div class="col-md-8">
-                        <h5>subTotal: </h5>
+                        <h5>Sub-Total: </h5>
                         <h5>Tax:</h5>
                         <h5>Total:</h5>
                      </div>
@@ -94,13 +94,15 @@
          quantity('case', false);
       })
 
+      //function for price and quantity
+
       function quantity(product, isIncrease) {
-         var quantityString = document.getElementById(product + 'Input').value;
-         var quantityNumber = parseInt(quantityString);
+         var quantityNumber = getInputValue(product)
+         var newQuantity = quantityNumber;
          if (isIncrease == true) {
             var newQuantity = quantityNumber + 1;
          }
-         if (isIncrease == false) {
+         if (isIncrease == false && newQuantity > 0) {
             var newQuantity = quantityNumber - 1;
          }
          document.getElementById(product + 'Input').value = newQuantity;
@@ -113,6 +115,32 @@
             var newPrice = newQuantity * 59;
             document.getElementById(product + 'Price').innerText = newPrice;
          }
+
+         total();
+      }
+
+      //function for total tax and grand total
+
+      function total() {
+         var phoneQuantity = getInputValue('phone');
+         var caseQuantity = getInputValue('case');
+
+         var subTotal = (phoneQuantity * 1219) + (caseQuantity * 59);
+         document.getElementById('subTotal').innerText = subTotal;
+
+         var tax = Math.round(subTotal * .05) //5% tax count
+         document.getElementById('tax').innerText = tax;
+
+         var total = subTotal + tax;
+         document.getElementById('total').innerText = total;
+      }
+
+      //input value
+
+      function getInputValue(product) {
+         var quantity = document.getElementById(product + 'Input');
+         var quantityNumber = parseInt(quantity.value);
+         return quantityNumber;
       }
 
 
